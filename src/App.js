@@ -1,24 +1,33 @@
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+import Navigation from "./components/Navigation"; // Import the Navigation component
+import DriverList from "./components/Driver/DriverList";
+import DriverForm from "./components/Driver/DriverForm";
+import TaxiList from "./components/Taxi/TaxiList";
+import TaxiForm from "./components/Taxi/TaxiForm";
+import CustomerList from "./components/Customer/CustomerList";
+import CustomerForm from "./components/Customer/CustomerForm";
+import TripList from "./components/Trip/TripList";
+import TripForm from "./components/Trip/TripForm";
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Router>
+      {/* Add the Navigation bar here */}
+      <Navigation />
+      {/* Define your routes below */}
+      <Routes>
+        <Route path="/" element={<h1>Welcome to the Taxi Management System</h1>} />
+        <Route path="/drivers" element={<DriverList />} />
+        <Route path="/drivers/add" element={<DriverForm />} />
+        <Route path="/taxis" element={<TaxiList />} />
+        <Route path="/taxis/add" element={<TaxiForm />} />
+        <Route path="/customers" element={<CustomerList />} />
+        <Route path="/customers/add" element={<CustomerForm />} />
+        <Route path="/trips" element={<TripList />} />
+        <Route path="/trips/add" element={<TripForm />} />
+      </Routes>
+    </Router>
   );
 }
 
